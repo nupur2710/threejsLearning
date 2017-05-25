@@ -33,6 +33,16 @@
 
     document.body.appendChild(renderer.domElement);
 
+    // resize viewport
+    window.addEventListener("resize", function() {
+        var width = window.innerWidth;
+        var height = window.innerHeight;
+        renderer.setSize(width, height);
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+    });
+    //we adjust the camera aspect to maintain the size of the object even when window is resized
+    
 
     //create the shape
     var geometry = new THREE.BoxGeometry(1, 1, 1);
