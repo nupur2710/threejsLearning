@@ -24,6 +24,7 @@
 
 <body>
     <script src="js/three.min.js"></script>
+    <script src="js/OrbitControls.js"></script>
     <script type="text/javascript">
     var scene = new THREE.Scene();
     var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -42,7 +43,9 @@
         camera.updateProjectionMatrix();
     });
     //we adjust the camera aspect to maintain the size of the object even when window is resized
-    
+
+
+    controls = new THREE.OrbitControls(camera, renderer.domElement);
 
     //create the shape
     var geometry = new THREE.BoxGeometry(1, 1, 1);
@@ -65,8 +68,8 @@
 
     //game logic
     var update = function() {
-        cube.rotation.x += 0.01;
-        cube.rotation.y += 0.01;
+        // cube.rotation.x += 0.01;
+        // cube.rotation.y += 0.01;
     };
 
 
