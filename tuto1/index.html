@@ -48,14 +48,40 @@
     controls = new THREE.OrbitControls(camera, renderer.domElement);
 
     //create the shape
-    var geometry = new THREE.BoxGeometry(1, 1, 1);
+    var geometry = new THREE.BoxGeometry(2, 2, 2);
+
+    var cubeMaterial = [
+        new THREE.MeshBasicMaterial({
+            map: new THREE.TextureLoader().load('images/minion.jpeg'),
+            side: THREE.DoubleSide
+        }), //right side
+        new THREE.MeshBasicMaterial({
+            map: new THREE.TextureLoader().load('images/mud.png'),
+            side: THREE.DoubleSide
+        }), //left
+        new THREE.MeshBasicMaterial({
+            map: new THREE.TextureLoader().load('images/images.png'),
+            side: THREE.DoubleSide
+        }), //top
+        new THREE.MeshBasicMaterial({
+            map: new THREE.TextureLoader().load('images/minion.jpeg'),
+            side: THREE.DoubleSide
+        }), //bottom
+        new THREE.MeshBasicMaterial({
+            color: 0xFFFFFF,
+            side: THREE.DoubleSide
+        }), //front
+        new THREE.MeshBasicMaterial({
+            map: new THREE.TextureLoader().load('images/images.png'),
+            side: THREE.DoubleSide
+        }) //back
+    ];
+
+    //add an array of materials for each faces of the cube
+
 
     //create a material, color or image texture
-    var material = new THREE.MeshBasicMaterial({
-        color: 0xFF0FF0,
-        wireframe: true
-
-    });
+    var material = new THREE.MeshFaceMaterial(cubeMaterial);
     // we use basic material  - so its is not clearly visible that its a cube
     // bcoz there is no proper lighting.
     // wireframe true shows only the borders of the cube
