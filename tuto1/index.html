@@ -23,7 +23,6 @@
 </head>
 
 <body>
-    <canvas id="renderCanvas"></canvas>
     <script src="js/three.min.js"></script>
     <script type="text/javascript">
     var scene = new THREE.Scene();
@@ -34,9 +33,30 @@
 
     document.body.appendChild(renderer.domElement);
 
+
+    //create the shape
+    var geometry = new THREE.BoxGeometry(1, 1, 1);
+
+    //create a material, color or image texture
+    var material = new THREE.MeshBasicMaterial({
+        color: 0xFF0FF0,
+        wireframe: true
+
+    });
+    // we use basic material  - so its is not clearly visible that its a cube
+    // bcoz there is no proper lighting.
+    // wireframe true shows only the borders of the cube
+    // wireframe false shows the entire opaque cube
+
+    var cube = new THREE.Mesh(geometry, material);
+
+    scene.add(cube);
+    camera.position.z = 3;
+
     //game logic
     var update = function() {
-
+        cube.rotation.x += 0.01;
+        cube.rotation.y += 0.01;
     };
 
 
@@ -51,9 +71,8 @@
         update();
         render();
     };
+
     GameLoop();
-
-
     </script>
 </body>
 
